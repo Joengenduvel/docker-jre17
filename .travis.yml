@@ -8,6 +8,7 @@ script:
     TAG='alpine3.14'
     docker tag $DOCKER_USERNAME/jre17 $DOCKER_USERNAME/jre17:$TAG
     docker push $DOCKER_USERNAME/jre17:$TAG
+    docker push $DOCKER_USERNAME/jre17
   fi
 notifications:
   slack:
