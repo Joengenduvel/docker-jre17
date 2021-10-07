@@ -1,14 +1,13 @@
 language: bash
 script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-- docker build -t $DOCKER_USERNAME/jre17:alpine3.14 .
+- docker build -t $DOCKER_USERNAME/jre17 .
 - |
   if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
     TAG='alpine3.14'
-    docker tag $DOCKER_USERNAME/mqtt-armhf $DOCKER_USERNAME/jre17:$TAG
+    docker tag $DOCKER_USERNAME/jre17 $DOCKER_USERNAME/jre17:$TAG
     docker push $DOCKER_USERNAME/jre17:$TAG
-    docker push $DOCKER_USERNAME/jre17
   fi
 notifications:
   slack:
