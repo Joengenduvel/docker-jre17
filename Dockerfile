@@ -14,6 +14,9 @@ RUN $JAVA_HOME/bin/jlink \
          --output /java-runtime
 
 FROM alpine:3.14
+RUN apk upgrade\
+ && apk del --repositories-file /dev/null apk-tools alpine-keys libc-utils busybox\
+ && rm -rf /var/cache/apk /lib/apk /etc/apk
 ENV JAVA_HOME=/opt/java/openjdk
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
 COPY --from=jre-build /java-runtime $JAVA_HOME
