@@ -6,7 +6,7 @@ RUN apk add binutils
 
 # Create a custom Java runtime using JLink
 RUN $JAVA_HOME/bin/jlink \
-         --add-modules java.base,java.desktop,java.instrument,java.logging,java.management,java.management.rmi,java.naming,java.net.http,java.prefs,java.rmi,java.security.jgss,java.security.sasl,java.sql,java.transaction.xa,java.xml,java.xml.crypto,jdk.unsupported,jdk.crypto.ec \
+         --add-modules java.base,java.desktop,java.instrument,java.logging,java.management,java.management.rmi,java.naming,java.net.http,java.prefs,java.rmi,java.scripting,java.security.jgss,java.security.sasl,java.sql,java.transaction.xa,java.xml,java.xml.crypto,jdk.unsupported,jdk.crypto.ec \
          --strip-debug \
          --no-man-pages \
          --no-header-files \
